@@ -78,7 +78,7 @@ const getAndSaveData = async (page) => {
 };
 
 const cronjob = cron.schedule(
-  '*/15 * * * *',
+  '0 */6 * * *',
   async () => {
     let page = 1;
     let totalPages = 1;
