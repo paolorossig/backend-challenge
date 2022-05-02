@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "710ab174-030d-48b5-85db-2175c2d785fb",
+		"name": "Marvel Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload Characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"characters\": [\n        {\n            \"id\": 1,\n            \"name\": \"test\",\n            \"imageUrl\": \"test\",\n            \"comicsAvailable\": 10,\n            \"seriesAvailable\": 20,\n            \"storiesAvailable\": 30,\n            \"wikiUrl\": \"test\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://marvel-challenge-backend.herokuapp.com/characters",
+					"protocol": "https",
+					"host": [
+						"marvel-challenge-backend",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://marvel-challenge-backend.herokuapp.com/characters?limit=20&offset=0",
+					"protocol": "https",
+					"host": [
+						"marvel-challenge-backend",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"characters"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Characters",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://marvel-challenge-backend.herokuapp.com/characters",
+					"protocol": "https",
+					"host": [
+						"marvel-challenge-backend",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
