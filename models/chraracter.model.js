@@ -3,7 +3,7 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 
 const characterSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true, unique: true },
+    id: { type: Number, required: true, unique: true },
     name: { type: String },
     imageUrl: { type: String },
     comicsAvailable: { type: Number },

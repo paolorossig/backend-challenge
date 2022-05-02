@@ -5,7 +5,7 @@ export async function getCharacters(req, res) {
     const { limit, offset } = req.query;
     const characters = await Character.paginate({}, { limit, offset });
 
-    res.status(201).json({
+    res.status(200).json({
       status: 'success',
       data: { total: characters.totalDocs, characters: characters.docs },
     });
