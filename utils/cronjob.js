@@ -7,6 +7,13 @@ const apikey = process.env.API_KEY;
 const hash = process.env.API_HASH;
 const apiURL = process.env.API_URL;
 
+/**
+ * It takes a page number as an argument, and returns an object with two properties: data and
+ * totalPages. The data property is an array of character objects, and the totalPages property is the
+ * total number of pages of data
+ * @param page - The page number to query.
+ * @returns An object with two properties: data and totalPages.
+ */
 const queryData = async (page) => {
   const limit = 100;
   const offset = (page - 1) * limit;
@@ -37,6 +44,12 @@ const queryData = async (page) => {
   }
 };
 
+/**
+ * It takes an array of objects and returns an array of objects with a subset of the original data
+ * @param rowData - The data that is returned from the API.
+ * @returns An array of objects with the following properties:
+ * id, name, imageUrl, comicsAvailable, seriesAvailable, storiesAvailable, wikiUrl
+ */
 const transformToCharacter = (rowData) => {
   return rowData.map((character) => {
     const {
@@ -61,6 +74,12 @@ const transformToCharacter = (rowData) => {
   });
 };
 
+/**
+ * It queries the data from the API, transforms it to the format we want, and then saves it to our
+ * database
+ * @param page - The page number to query.
+ * @returns The total number of pages
+ */
 const getAndSaveData = async (page) => {
   try {
     const { data, totalPages } = await queryData(page);
@@ -77,8 +96,9 @@ const getAndSaveData = async (page) => {
   }
 };
 
+/* A cron job that runs every 15 minutes. */
 const cronjob = cron.schedule(
-  '0 */6 * * *',
+  '*/15 * * * *',
   async () => {
     let page = 1;
     let totalPages = 1;
