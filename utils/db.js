@@ -5,7 +5,8 @@ let connection;
 export function connectDb() {
   if (connection) return;
 
-  const url = process.env.MONGO_URL;
+  const mongoUrl = process.env.MONGO_URL;
+  const url = process.env.NODE_ENV === 'test' ? mongoUrl + '-dev' : mongoUrl;
   const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,

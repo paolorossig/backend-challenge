@@ -7,7 +7,10 @@
   "author": "Paolo Rossi <paolo.rossi@pucp.edu.pe>",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "test:watch": "yarn test --watchAll",
+    "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -19,6 +22,8 @@
     "node-cron": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "jest": "^28.0.3",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   }
 }
